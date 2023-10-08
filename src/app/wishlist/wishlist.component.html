@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row gy-3">
+        <div *ngFor="let item of WishList" class="col-md-2">
+            <div class="product px-2 overflow-hidden">
+                <a [routerLink]="['/productDetails',item._id]">
+                    <img [src]="item.imageCover" class="w-100" alt="">
+                </a>
+                <div class="d-flex justify-content-between align-content-center">
+                    <span class="text-main fw-bold">{{item.category.name}}</span>
+                    <i (click)="deleteWishList(item._id)" class="fa-solid fa-heart text-danger"></i>
+                </div>
+                <h3 class="fs-5">{{item.title|seemore:2}}</h3>
+                <div class="d-flex justify-content-between">
+                    <span>{{item.price|currency}}</span>
+                    <span>
+                        <i class="fa-solid fa-star rating-color"></i>
+                        {{item.ratingsAverage}}
+                    </span>
+                </div>
+                <div class="my-2">
+                    <button (click)="addToMyCart(item._id)" class="btn bg-main text-white w-100">+Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
